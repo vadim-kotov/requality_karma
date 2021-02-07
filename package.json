@@ -1,0 +1,31 @@
+{
+  "name": "requality_karma",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test COVERAGE=false karma start",
+    "build": "webpack",
+    "start": "webpack serve --output-public-path=/build/"
+  },
+  "author": "Vadim Kotov",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "@babel/preset-env": "^7.12.10",
+    "babel-loader": "^8.2.2",
+    "chai": "^4.2.0",
+    "istanbul-instrumenter-loader": "^3.0.1",
+    "karma": "^6.0.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-firefox-launcher": "^2.1.0",
+    "karma-mocha": "^2.0.1",
+    "karma-mocha-reporter": "^2.2.5",
+    "karma-webpack": "^5.0.0-alpha.6",
+    "mocha": "^8.2.1",
+    "webpack": "^5.10.1",
+    "webpack-cli": "^4.2.0",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
