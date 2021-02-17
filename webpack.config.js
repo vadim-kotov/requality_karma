@@ -1,5 +1,7 @@
+/*
 const path = require('path');
 const _ = require('lodash');
+*/
 
 // var context = process.env.NODE_ENV || 'development';
 
@@ -31,6 +33,45 @@ module.exports = {
 
 function getJavaScriptLoaders() {
     return [
+        /*
+        {
+            test: /\.html$/,
+            loader: 'html-loader',
+            options: {
+                attributes: {
+                    urlFilter: ( attribute, value ) => {
+                        if( /\.css$/.test(value) ) {
+                            return false;
+                        }
+
+                        return true;
+                    }
+                }
+            }            
+        },
+        */
+
+        {
+            test: /jseditor\.js$/,
+            loader: 'imports-loader',
+            options: {
+                type: 'commonjs',
+                imports: {
+                    moduleName: './requality_karma/src/dependencies.js',
+                    name: 'dependencies'
+                },
+                additionalCode: 'var getExtraAttrsNames = dependencies.getExtraAttrsNames;' +
+                                'var constructNodeChildren = dependencies.constructNodeChildren;'
+            }
+        },
+        {
+            test: /jseditor\.js$/,
+            loader: 'exports-loader',
+            options: {
+                type: 'commonjs',
+                exports: [ 'loadNodeSubtreeByUUID' ]
+            }
+        },
         {
             test: /\.js$/,
             loader: 'babel-loader',
@@ -39,6 +80,7 @@ function getJavaScriptLoaders() {
                 presets: ['@babel/preset-env']
             }
         }
+
             /*,
             {
                 test: /\.js$/,
