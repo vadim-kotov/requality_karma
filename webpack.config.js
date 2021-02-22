@@ -61,7 +61,9 @@ function getJavaScriptLoaders() {
                     name: 'dependencies'
                 },
                 additionalCode: 'var getExtraAttrsNames = dependencies.getExtraAttrsNames;' +
-                                'var constructNodeChildren = dependencies.constructNodeChildren;'
+                                'var constructNodeChildren = dependencies.constructNodeChildren;' +
+
+                                'var loadNodeTreeByUUID = dependencies.loadNodeTreeByUUID'
             }
         },
         {
@@ -69,7 +71,16 @@ function getJavaScriptLoaders() {
             loader: 'exports-loader',
             options: {
                 type: 'commonjs',
-                exports: [ 'loadNodeSubtreeByUUID' ]
+                exports: [ 
+                    'loadNodeSubtreeByUUID',
+
+                    'getStartNode',
+                    'loadNodeByUUID',
+                    'addToCache',
+                    'getCache',
+                    'loadNodeTreeByUUID',
+                    'clearCache'
+                ]
             }
         },
         {
